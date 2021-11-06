@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 .header .appBar {
     background: #2e2e2e;
     height: 13vh;
@@ -22,4 +26,33 @@
 
 .header .appBar .accountInvisible {
     visibility: hidden;
+}
+
+.headerListContainer {
+    background-color: #efe7d3;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 25vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.headerListContainer .headerList {
+    display: flex;
+    justify-content: space-around;
+    flex: 1;
+}
+
+.headerListContainer .headerList .headerListItem {
+    justify-content: center;
+    font-size: 18px;
+    padding: 45px;
+    background-color: #fff;
+    transition: all 0.8s ease;
+}
+
+.headerListContainer .headerList .headerListItem:hover {
+    background-color: #e9eaec;
+    filter: drop-shadow(2px 2px 1px rgba(0, 0, 0, 0.25));
 }

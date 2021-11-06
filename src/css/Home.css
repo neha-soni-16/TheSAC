@@ -1,0 +1,30 @@
+.home {
+    padding: 10px;
+    height: 87vh;
+}
+
+.home .imageContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 86vh;
+    padding: 25px;
+}
+
+.home .imageContainer .imageHome {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.home .imageContainer .imageHome .homeText {
+    text-align: center;
+    font-size: 22px;
+}
+
+.home .imageContainer .imageHome .hover:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+    transition: all 0.6s ease;
+}

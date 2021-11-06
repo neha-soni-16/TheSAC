@@ -1,37 +1,49 @@
 import React from "react";
 import "../css/Header.css";
-import { AppBar, Typography, Toolbar, CssBaseline,Drawer, List, ListItem, ListItemText } from "@material-ui/core";
+import {
+    AppBar,
+    Typography,
+    Toolbar,
+    CssBaseline,
+    Drawer,
+    List,
+    ListItem,
+    ListItemText,
+} from "@material-ui/core";
 import MenuOpenOutlinedIcon from "@material-ui/icons/MenuOpen";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import IconButton from "@material-ui/core/IconButton";
 
-
-
-const Header = () => {
-
+const Header = (props) => {
     const [state, setState] = React.useState(false);
 
-    const toogleDrawer = (open)=> (event)=>{
+    const toogleDrawer = (open) => (event) => {
         setState(open);
-    }  
+    };
 
-    const list=()=>(
-        <div onClick={toogleDrawer(false)}>
-
-            <List>
-                <ListItem button>Oii</ListItem>
-                <ListItem button>Hola</ListItem>
-                <ListItem button>Yo</ListItem>
-
+    const list = () => (
+        <div className="headerListContainer" onClick={toogleDrawer(false)}>
+            <List className="headerList">
+                <ListItem className="headerListItem" button>
+                    Home
+                </ListItem>
+                <ListItem className="headerListItem" button>
+                    Visualise
+                </ListItem>
+                <ListItem className="headerListItem" button>
+                    Elaborate
+                </ListItem>
+                <ListItem className="headerListItem" button>
+                    Compare
+                </ListItem>
+                <ListItem className="headerListItem" button>
+                    About
+                </ListItem>
             </List>
-
         </div>
+    );
 
-    )
-    
-   
     return (
-
         <div className="header">
             <CssBaseline />
             <AppBar className="appBar" position="sticky">
@@ -46,26 +58,21 @@ const Header = () => {
                 </IconButton>
 
                 <Drawer
-                    anchor={'top'}
+                    anchor={"top"}
                     open={state}
                     onClose={toogleDrawer(false)}
-                
                 >
-
-                {list()}
+                    {list()}
                 </Drawer>
 
-
-
-
                 <div className="headerName">
-                    <Typography className="home" variant="h5">
-                        Home
+                    <Typography className="homeTitle" variant="h5">
+                        {props.name}
                     </Typography>
-                    <Typography className="space" variant="h4">
+                    <Typography className="spaceTile" variant="h4">
                         &nbsp; | &nbsp;
                     </Typography>
-                    <Typography className="theSAC" variant="h4">
+                    <Typography className="theSACTitle" variant="h4">
                         The SAC
                     </Typography>
                 </div>
