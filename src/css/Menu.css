@@ -1,0 +1,35 @@
+.headerListContainer {
+    background-color: #efe7d3;
+    padding-left: 22px;
+    padding-right: 22px;
+    height: 190px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.headerListContainer .headerList {
+    display: flex;
+    justify-content: space-around;
+    flex: 1;
+}
+
+.headerListContainer .headerList .headerListItem {
+    justify-content: center;
+    background-color: #fff;
+    transition: all 0.8s ease;
+}
+
+.headerListContainer .headerList .headerListItem .noLink {
+    text-decoration: none;
+    font-size: 18px;
+    transition: all 0.8s ease;
+    color: black;
+    padding: 50px;
+}
+
+.headerListContainer .headerList .headerListItem:hover {
+    background-color: #e9eaec;
+    filter: drop-shadow(2px 2px 1px rgba(0, 0, 0, 0.25));
+    transition: all 0.8s ease;
+}

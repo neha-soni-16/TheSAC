@@ -3,7 +3,7 @@ import React from "react";
 function Visualise() {
     return (
         <div>
-            <h1> Hoii </h1>
+            <h1> Hoii Visual </h1>
         </div>
     );
 }
