@@ -1,0 +1,66 @@
+.visualise {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 10px;
+}
+
+.visualise .tableContainer {
+    padding: 20px;
+    width: 60%;
+}
+
+.visualise .infoContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.visualise .infoContainer .scheduleAlgoContainer {
+    width: 415px;
+    height: 41vh;
+    margin: 12px;
+    background: #ffd4db;
+    box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 81.7647px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.visualise .infoContainer .algoTypeContainer {
+    width: 415px;
+    height: 31vh;
+    margin: 12px;
+    background: #bbe7fe;
+    box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 81.7647px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.visualise .infoContainer h1 {
+    font-size: 28px;
+    font-weight: 400px;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+.visualise .infoContainer h3 {
+    font-size: 19px;
+    transition: all 0.2s ease;
+    line-height: 19px;
+}
+
+.visualise .infoContainer h3:hover {
+    cursor: pointer;
+    font-size: 23px;
+    transition: all 0.2s ease;
+}

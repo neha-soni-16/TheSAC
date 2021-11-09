@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 .headerListContainer {
     background-color: #efe7d3;
     padding-left: 22px;
@@ -5,12 +9,13 @@
     height: 190px;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
 }
 
 .headerListContainer .headerList {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
     flex: 1;
 }
 
@@ -18,6 +23,8 @@
     justify-content: center;
     background-color: #fff;
     transition: all 0.8s ease;
+    padding: 2px;
+    margin: 0px;
 }
 
 .headerListContainer .headerList .headerListItem .noLink {
@@ -28,8 +35,13 @@
     padding: 50px;
 }
 
+.headerListContainer .headerList .headerListItem .noLink:hover {
+    cursor: pointer;
+}
+
 .headerListContainer .headerList .headerListItem:hover {
     background-color: #e9eaec;
     filter: drop-shadow(2px 2px 1px rgba(0, 0, 0, 0.25));
     transition: all 0.8s ease;
+    cursor: default;
 }

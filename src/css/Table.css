@@ -1,0 +1,76 @@
+.table {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.table .dataTableContainer {
+    max-height: 44vh;
+    overflow-y: scroll;
+    overflow-x: scroll;
+    width: 100%;
+    flex: 1;
+    margin: 10px;
+    margin-top: 15px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td {
+    border: 1px solid #2e2e2e;
+    text-align: left;
+    padding: 10px;
+    font-size: 20px;
+}
+
+th {
+    background-color: #bbe7fe;
+    border-radius: 5px;
+    background: linear-gradient(#d3b5e5 90%, #2e2e2e);
+    box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.25);
+}
+
+td {
+    background-color: #fff;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    margin: 10px;
+    padding: 8px;
+}
+
+form h2 {
+    text-transform: uppercase;
+}
+
+form .formInput {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+form input {
+    font-size: 20px;
+    margin: 8px;
+    padding: 10px;
+    width: 200px;
+}
+
+form button {
+    width: 150px;
+    padding: 10px;
+    margin: 8px;
+    font-size: 20px;
+}
