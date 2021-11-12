@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import Table from "./Table";
+import RR from "./RR";
+import FCFS from "./FCFS";
 import "../css/Visualise.css";
 
 function Visualise() {
@@ -22,7 +23,8 @@ function Visualise() {
                 </div>
             </div>
             <div className="tableContainer">
-                <Table
+                {/* <RR processData={processData} setProcessData={setProcessData} /> */}
+                <FCFS
                     processData={processData}
                     setProcessData={setProcessData}
                 />
