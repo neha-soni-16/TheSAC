@@ -24,7 +24,7 @@ function Visualise() {
             </div>
             <div className="tableContainer">
                 {/* <RR processData={processData} setProcessData={setProcessData} /> */}
-                <RR
+                <FCFS
                     processData={processData}
                     setProcessData={setProcessData}
                 />
