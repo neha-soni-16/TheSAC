@@ -35,6 +35,7 @@ const RR = (props) => {
                         t = t + rem_bt[i];
 
                         wt[i] = t - parseInt(processData[i].BurstTime);
+                        
 
                         rem_bt[i] = 0;
                     }

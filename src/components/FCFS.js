@@ -62,8 +62,8 @@ const FCFS = (props) => {
 
             const temp = [];
             temp.push((processData[i].ProcessId).toString());
-            temp.push(start);
-            temp.push(turnArTime[i]);
+            temp.push(new Date(0,0,0,0,0,start));
+            temp.push(new Date(0,0,0,0,0,turnArTime[i]));
 
             start =turnArTime[i];
             end = end + turnArTime[i];
@@ -83,7 +83,6 @@ const FCFS = (props) => {
         fillChart(props.processData,turnAround);
         console.log(turnAround);
 
-
        return (    
         
         <Chart
@@ -93,7 +92,7 @@ const FCFS = (props) => {
             loader={<div>Loading Chart</div>}
             data={chartData}
             options={{
-            showRowNumber: true,
+            showRowNumber: true
             }}
             rootProps={{ 'data-testid': '1' }}
       />)
