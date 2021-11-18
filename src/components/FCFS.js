@@ -1,36 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import Table from "./Table";
-import Chart from "react-google-charts";
+import Timeline from "./Timeline";
 
 let turnAround = [];
 
 const FCFS = (props) => {
-    const chartDataInit = [
-        [
-            { type: "string", id: "processId" },
-            { type: "number", id: "Start" },
-            { type: "number", id: "End" },
-        ],
-    ];
-
-    const [chart, setchart] = useState(false);
-    const [chartData, setChartData] = useState(chartDataInit);
-
-    // const data_arr=[[{ type: 'string', id: 'President' },
-    // { type: 'number', id: 'Start' },
-    // { type: 'number', id: 'End' }]];
-
-    // const num=1;
-
-    // const temp = [];
-    // temp.push(num.toString());
-    // temp.push(0);
-    // temp.push(12);
-
-    // data_arr.push(temp);
-
-    // data_arr.push(['Nik',20,34]);
-
     const findWaitingTime = (processData, processLen, waitTime) => {
         waitTime[0] = 0;
         for (let i = 1; i < processLen; i++) {
@@ -52,42 +26,6 @@ const FCFS = (props) => {
         }
     };
 
-    const fillChart = (processData, turnArTime) => {
-        let start = 0;
-        let end = 0;
-
-        for (let i = 0; i < processData.length; i++) {
-            const temp = [];
-            temp.push((processData[i].ProcessId).toString());
-            temp.push(new Date(0,0,0,0,0,start));
-            temp.push(new Date(0,0,0,0,0,turnArTime[i]));
-
-            start = turnArTime[i];
-            end = end + turnArTime[i];
-            setChartData((chartData) => [...chartData, temp]);
-
-            // chartData.push(temp);
-        }
-    };
-
-    const DisplayChart = () => {
-        // fillChart(props.processData, turnAround);
-
-        return (
-            <Chart
-                width={"1000px"}
-                height={"1000px"}
-                chartType="Timeline"
-                loader={<div>Loading Chart</div>}
-                data={chartData}
-                options={{
-                    showRowNumber: true,
-                }}
-                rootProps={{ "data-testid": "1" }}
-            />
-        );
-    };
-
     const calculateFCFS = (processData) => {
         let processLen = processData.length;
         let waitTime = new Array(processLen),
@@ -104,14 +42,25 @@ const FCFS = (props) => {
         findWaitingTime(processData, processLen, waitTime);
         findTurnAroundTime(processData, processLen, turnArTime, waitTime);
 
+        let start = 0;
+        let end = 0;
+
         for (let i = 0; i < processLen; i++) {
             totalWaitTime = totalWaitTime + waitTime[i];
             totalTurnArTime = totalTurnArTime + turnArTime[i];
+            const temp = [];
+            temp.push((processData[i].ProcessId).toString());
+            temp.push(start);
+            temp.push(turnArTime[i]);
+
+            start = turnArTime[i];
+            end = end + turnArTime[i];
+            props.setProcessSequence((processSequence) => [...processSequence, temp]);
         }
+
         let avgTurnArTime = totalWaitTime / processLen;
         let avgWaitTime = Math.floor(totalTurnArTime / processLen);
-        fillChart(props.processData, turnAround);
-        setchart((x) => !x);
+        props.setchart((chart) => !chart);
     };
 
     return (
@@ -123,7 +72,15 @@ const FCFS = (props) => {
             <button onClick={() => calculateFCFS(props.processData)}>
                 submit
             </button>
-            {chart && <DisplayChart />}
+
+            {
+                props.chart
+                && 
+                <Timeline
+                    chartData={props.chartData}
+                    setChartData={props.setChartData}
+                    processSequence={props.processSequence} />
+            }
         </div>
     );
 };

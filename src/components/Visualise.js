@@ -7,6 +7,19 @@ function Visualise() {
     const data = [];
     const [processData, setProcessData] = useState(data);
 
+    const chartDataInit = [
+        [
+            { type: "string", id: "processId" },
+            { type: "number", id: "Start" },
+            { type: "number", id: "End" },
+        ],
+    ];
+
+    const [chart, setchart] = useState(false);
+    const [chartData, setChartData] = useState(chartDataInit);
+
+    const [processSequence, setProcessSequence] = useState(data);
+
     return (
         <div className="visualise">
             <div className="infoContainer">
@@ -27,6 +40,12 @@ function Visualise() {
                 <FCFS
                     processData={processData}
                     setProcessData={setProcessData}
+                    chart={chart}
+                    setchart = {setchart}
+                    chartData={chartData}
+                    setChartData={setChartData}
+                    processSequence={processSequence}
+                    setProcessSequence={setProcessSequence}
                 />
             </div>
         </div>
