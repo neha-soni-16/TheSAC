@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Table from "./Table";
 import Timeline from "./Timeline";
+import OutputTable from "./OutputTable";
 
 const RR = (props) => {
+    const [waitingTime, setWaitTime] = useState([]);
+    const [turnAroundTime, setTurnArTime] = useState([]);
+
     const findWaitingTime = (processData, processLen, waitTime, quantum) => {
         let remainingBurstTime = new Array(processLen).fill(0);
         for (let i = 0; i < processLen; i++)
@@ -68,6 +72,9 @@ const RR = (props) => {
             totalTurnArTime = totalTurnArTime + turnArTime[i];
         }
 
+        setWaitTime(waitTime);
+        setTurnArTime(turnArTime);
+
         props.setchart((chart) => !chart);
     };
 
@@ -96,12 +103,21 @@ const RR = (props) => {
             </form>
 
             {props.chart && (
-                <Timeline
-                    chart={props.chart}
-                    chartData={props.chartData}
-                    setChartData={props.setChartData}
-                    processSequence={props.processSequence}
-                />
+                <div>
+                    <h1>Output Table</h1>
+                    <OutputTable
+                        processData={props.processData}
+                        waitTime={waitingTime}
+                        turnArTime={turnAroundTime}
+                    />
+                    <h1>Gantt Chart</h1>
+                    <Timeline
+                        chart={props.chart}
+                        chartData={props.chartData}
+                        setChartData={props.setChartData}
+                        processSequence={props.processSequence}
+                    />
+                </div>
             )}
         </div>
     );

@@ -32,7 +32,6 @@ const Timeline = (props) => {
         <div>
             <Chart
                 width={"100%"}
-                height={"1000px"}
                 chartType="Timeline"
                 loader={<div>Loading Chart</div>}
                 data={props.chartData}

@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import Table from "./Table";
 import Timeline from "./Timeline";
+import OutputTable from "./OutputTable";
 
 let turnAround = [];
 
 const FCFS = (props) => {
+    const [waitingTime, setWaitTime] = useState([]);
+    const [turnAroundTime, setTurnArTime] = useState([]);
+
     const findWaitingTime = (processData, processLen, waitTime) => {
         waitTime[0] = 0;
         for (let i = 1; i < processLen; i++) {
@@ -42,6 +46,9 @@ const FCFS = (props) => {
         findWaitingTime(processData, processLen, waitTime);
         findTurnAroundTime(processData, processLen, turnArTime, waitTime);
 
+        setWaitTime(waitTime);
+        setTurnArTime(turnArTime);
+
         let start = 0;
         let end = 0;
         props.setProcessSequence([]);
@@ -78,11 +85,21 @@ const FCFS = (props) => {
             </button>
 
             {props.chart && (
-                <Timeline
-                    chartData={props.chartData}
-                    setChartData={props.setChartData}
-                    processSequence={props.processSequence}
-                />
+                <div>
+                    <h1>Output Table</h1>
+                    <OutputTable
+                        processData={props.processData}
+                        waitTime={waitingTime}
+                        turnArTime={turnAroundTime}
+                    />
+                    <h1>Gantt Chart</h1>
+                    <Timeline
+                        style={{ display: "inline" }}
+                        chartData={props.chartData}
+                        setChartData={props.setChartData}
+                        processSequence={props.processSequence}
+                    />
+                </div>
             )}
         </div>
     );

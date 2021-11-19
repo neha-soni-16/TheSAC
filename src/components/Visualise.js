@@ -26,10 +26,18 @@ function Visualise() {
     return (
         <div className="visualise">
             <div className="infoContainer">
+                <div className="algoTypeContainer">
+                    <h1>Working Algorithm</h1>
+                    <h3 style={{ cursor: "default" }} id="workingAlgo">
+                        Round Robin
+                    </h3>
+                </div>
                 <div className="scheduleAlgoContainer">
                     <h1>Scheduling Algorithms</h1>
                     <h3
                         onClick={() => {
+                            document.getElementById("workingAlgo").innerHTML =
+                                "Round Robin";
                             setAlgorithm("rr");
                             setChartData(chartDataInit);
                             setProcessSequence([]);
@@ -40,6 +48,8 @@ function Visualise() {
                     </h3>
                     <h3
                         onClick={() => {
+                            document.getElementById("workingAlgo").innerHTML =
+                                "First Come First Serve";
                             setAlgorithm("fcfs");
                             setChartData(chartDataInit);
                             setProcessSequence([]);
@@ -50,6 +60,8 @@ function Visualise() {
                     </h3>
                     <h3
                         onClick={() => {
+                            document.getElementById("workingAlgo").innerHTML =
+                                "Shortest Job First";
                             setAlgorithm("sjf");
                             setChartData(chartDataInit);
                             setProcessSequence([]);
@@ -58,11 +70,6 @@ function Visualise() {
                     >
                         Shortest Job First
                     </h3>
-                </div>
-                <div className="algoTypeContainer">
-                    <h1>Algorithm Type</h1>
-                    <h3>I / O Bound</h3>
-                    <h3>Preemptive</h3>
                 </div>
             </div>
             <div className="tableContainer">
