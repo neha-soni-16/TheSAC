@@ -1,9 +1,14 @@
 import React from "react";
+import FcfsElab from "./FcfsElab";
+import RrElab from "./RrElab";
+import SjfElab from "./SjfElab";
 
 function Elaborate() {
     return (
         <div>
-            <h1> Hoii Elaborate </h1>
+            <RrElab />
+            {/* <FcfsElab /> */}
+            {/* <SjfElab /> */}
         </div>
     );
 }
