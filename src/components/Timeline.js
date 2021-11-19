@@ -1,28 +1,37 @@
-import React,{useEffect} from 'react'
+import React, { useEffect } from "react";
 import Chart from "react-google-charts";
 
 const Timeline = (props) => {
+    const chartDataInit = [
+        [
+            { type: "string", id: "processId" },
+            { type: "number", id: "Start" },
+            { type: "number", id: "End" },
+        ],
+    ];
+
     const fillChart = (processSequence) => {
-        console.log(props.processSequence);
+        props.setChartData(chartDataInit);
+
         for (let i = 0; i < processSequence.length; i++) {
             const temp = [];
-            temp.push((processSequence[i][0]));
-            temp.push(new Date(0,0,0,0,0,processSequence[i][1]));
-            temp.push(new Date(0,0,0,0,0,processSequence[i][2]));
+            temp.push(processSequence[i][0]);
+            temp.push(new Date(0, 0, 0, 0, 0, processSequence[i][1]));
+            temp.push(new Date(0, 0, 0, 0, 0, processSequence[i][2]));
             props.setChartData((chartData) => [...chartData, temp]);
         }
+        console.log("hello");
     };
 
     useEffect(() => {
-        fillChart(props.processSequence)
-        return () => {
-        }
-    }, [])
+        fillChart(props.processSequence);
+        return () => {};
+    }, []);
 
     return (
         <div>
             <Chart
-                width={"1000px"}
+                width={"100%"}
                 height={"1000px"}
                 chartType="Timeline"
                 loader={<div>Loading Chart</div>}
@@ -33,7 +42,7 @@ const Timeline = (props) => {
                 rootProps={{ "data-testid": "1" }}
             />
         </div>
-    )
-}
+    );
+};
 
-export default Timeline
+export default Timeline;

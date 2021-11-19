@@ -16,59 +16,59 @@
     margin-top: 15px;
 }
 
-table {
+.table table {
     border-collapse: collapse;
     width: 100%;
 }
 
-th,
-td {
+.table th,
+.table td {
     border: 1px solid #2e2e2e;
     text-align: left;
     padding: 10px;
     font-size: 20px;
 }
 
-th {
+.table th {
     background-color: #bbe7fe;
     border-radius: 5px;
     background: linear-gradient(#d3b5e5 90%, #2e2e2e);
     box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.25);
 }
 
-td {
+.table td {
     background-color: #fff;
 }
 
-form {
+.table form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 60%;
+    width: 100%;
     margin: 10px;
     padding: 8px;
 }
 
-form h2 {
+.table form h2 {
     text-transform: uppercase;
 }
 
-form .formInput {
+.table form .formInput {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 }
 
-form input {
+.table form input {
     font-size: 20px;
     margin: 8px;
     padding: 10px;
-    width: 200px;
+    width: 40%;
 }
 
-form button {
+.table form button {
     width: 150px;
     padding: 10px;
     margin: 8px;

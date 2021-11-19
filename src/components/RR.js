@@ -1,77 +1,81 @@
 import React from "react";
 import Table from "./Table";
+import Timeline from "./Timeline";
 
 const RR = (props) => {
-    const findWaitingTime = (processData, n, wt, quantum) => {
-        let rem_bt = new Array(n).fill(0);
-        for (let i = 0; i < n; i++)
-            rem_bt[i] = parseInt(processData[i].BurstTime);
- 
-        let t = 0; 
-        while (1) {
-            let done = true;
- 
-            for (let i = 0; i < n; i++) {
-                if (rem_bt[i] > 0) {
-                    done = false; 
-                        
-                    if (rem_bt[i] > quantum) {
-                        t += quantum;
-                        rem_bt[i] -= quantum;
+    const findWaitingTime = (processData, processLen, waitTime, quantum) => {
+        let remainingBurstTime = new Array(processLen).fill(0);
+        for (let i = 0; i < processLen; i++)
+            remainingBurstTime[i] = parseInt(processData[i].BurstTime);
+
+        let time = 0;
+        props.setProcessSequence([]);
+
+        while (true) {
+            let processesCompleted = true;
+
+            for (let i = 0; i < processLen; i++) {
+                if (remainingBurstTime[i] > 0) {
+                    processesCompleted = false;
+
+                    const temp = [];
+                    temp.push(processData[i].ProcessId.toString());
+                    temp.push(time);
+
+                    if (remainingBurstTime[i] > quantum) {
+                        time = time + quantum;
+                        remainingBurstTime[i] -= quantum;
+                    } else {
+                        time = time + remainingBurstTime[i];
+                        waitTime[i] = time - parseInt(processData[i].BurstTime);
+                        remainingBurstTime[i] = 0;
                     }
- 
 
-                    else {
-
-                        t = t + rem_bt[i];
-                        wt[i] = t - parseInt(processData[i].BurstTime);
-                        
-
-                        rem_bt[i] = 0;
-                    }
+                    temp.push(time);
+                    props.setProcessSequence((processSequence) => [
+                        ...processSequence,
+                        temp,
+                    ]);
                 }
             }
- 
-            if (done === true)
-                break;
+            if (processesCompleted === true) break;
         }
-    }
+    };
 
-    const findTurnAroundTime = (processData, n, wt, tat) => {
-        for (let i = 0; i < n; i++)
-            tat[i] = parseInt(processData[i].BurstTime) + wt[i];
-    }
+    const findTurnAroundTime = (
+        processData,
+        processLen,
+        waitTime,
+        turnArTime
+    ) => {
+        for (let i = 0; i < processLen; i++)
+            turnArTime[i] = parseInt(processData[i].BurstTime) + waitTime[i];
+    };
 
+    const findavgTime = (processData, quantum) => {
+        let processLen = processData.length;
 
-    const findavgTime = (processData,quantum) => {
+        let waitTime = new Array(processLen).fill(0),
+            turnArTime = new Array(processLen).fill(0);
+        let totalWaitTime = 0,
+            totalTurnArTime = 0;
 
-        let n = processData.length;
+        findWaitingTime(processData, processLen, waitTime, quantum);
+        findTurnAroundTime(processData, processLen, waitTime, turnArTime);
 
-        let wt = new Array(n).fill(0), tat = new Array(n).fill(0);
-        let total_wt = 0, total_tat = 0;
-
-        findWaitingTime(processData, n, wt, quantum);
-
-        findTurnAroundTime(processData, n, wt, tat);
-
-        for (let i = 0; i < n; i++) {
-            total_wt = total_wt + wt[i];
-            total_tat = total_tat + tat[i];
+        for (let i = 0; i < processLen; i++) {
+            totalWaitTime = totalWaitTime + waitTime[i];
+            totalTurnArTime = totalTurnArTime + turnArTime[i];
         }
 
-        console.log("Average waiting time = ", total_wt / n);
-        console.log("Average turn around time = ", total_tat / n);
+        props.setchart((chart) => !chart);
+    };
 
-    }
-
-
-    const handleCalculate = (event) =>{
-        
+    const handleCalculate = (event) => {
         event.preventDefault();
         let quantum = parseInt(event.target.timeQuantum.value);
-
-        findavgTime(props.processData,quantum);
-    }
+        findavgTime(props.processData, quantum);
+    };
 
     return (
         <div className="rr">
@@ -81,9 +85,24 @@ const RR = (props) => {
             />
 
             <form onSubmit={handleCalculate}>
-                <input type="number" name="timeQuantum"/>
+                <input
+                    type="number"
+                    name="timeQuantum"
+                    placeholder="Time Quantum"
+                    min="0"
+                    required="required"
+                />
                 <button>Calculate</button>
             </form>
+
+            {props.chart && (
+                <Timeline
+                    chart={props.chart}
+                    chartData={props.chartData}
+                    setChartData={props.setChartData}
+                    processSequence={props.processSequence}
+                />
+            )}
         </div>
     );
 };

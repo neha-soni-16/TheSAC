@@ -44,18 +44,22 @@ const FCFS = (props) => {
 
         let start = 0;
         let end = 0;
+        props.setProcessSequence([]);
 
         for (let i = 0; i < processLen; i++) {
             totalWaitTime = totalWaitTime + waitTime[i];
             totalTurnArTime = totalTurnArTime + turnArTime[i];
             const temp = [];
-            temp.push((processData[i].ProcessId).toString());
+            temp.push(processData[i].ProcessId.toString());
             temp.push(start);
             temp.push(turnArTime[i]);
 
             start = turnArTime[i];
             end = end + turnArTime[i];
-            props.setProcessSequence((processSequence) => [...processSequence, temp]);
+            props.setProcessSequence((processSequence) => [
+                ...processSequence,
+                temp,
+            ]);
         }
 
         let avgTurnArTime = totalWaitTime / processLen;
@@ -73,14 +77,13 @@ const FCFS = (props) => {
                 submit
             </button>
 
-            {
-                props.chart
-                && 
+            {props.chart && (
                 <Timeline
                     chartData={props.chartData}
                     setChartData={props.setChartData}
-                    processSequence={props.processSequence} />
-            }
+                    processSequence={props.processSequence}
+                />
+            )}
         </div>
     );
 };
