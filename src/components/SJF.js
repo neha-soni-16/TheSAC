@@ -2,6 +2,7 @@ import React from "react";
 import Table from "./Table";
 
 const SJF = (props) => {
+
     const findWaitingTime = (processData, n, wt) => {
         let rem_bt = new Array(n).fill(0);
         for (let i = 0; i < n; i++)
@@ -10,7 +11,7 @@ const SJF = (props) => {
         let shortest = 0, finish_time;
         let check = false;
         
-        while (complete !=n) {
+        while (complete !==n) {
             
  
             for (let i = 0; i < n; i++) {
@@ -27,10 +28,10 @@ const SJF = (props) => {
             }
             rem_bt[shortest]--;
             minm=rem_bt[shortest];
-            if(minm==0){
+            if(minm===0){
                 minm=Number.MAX_VALUE;
             }
-            if(rem_bt[shortest]==0){
+            if(rem_bt[shortest]===0){
                 complete++;
                 check=false;
                 finish_time=t+1;
@@ -87,7 +88,6 @@ const SJF = (props) => {
             />
 
             <form onSubmit={handleCalculate}>
-                <input type="number" name="timeQuantum"/>
                 <button>Calculate</button>
             </form>
         </div>
