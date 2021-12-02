@@ -6,9 +6,9 @@ import SjfElab from "./SjfElab";
 function Elaborate() {
     return (
         <div>
-            <RrElab />
-            {/* <FcfsElab /> */}
-            {/* <SjfElab /> */}
+            {/*<RrElab />*/}
+            {/*<FcfsElab />*/}
+            <SjfElab />
         </div>
     );
 }

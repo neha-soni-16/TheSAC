@@ -19,6 +19,7 @@ const App = () => {
     const changeComponent = (newComponent) => {
         setComponentState(newComponent);
     };
+    
 
     const location = useLocation();
 

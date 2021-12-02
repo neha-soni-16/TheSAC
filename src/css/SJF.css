@@ -1,0 +1,15 @@
+.SJF {    
+    padding: 20px;
+}
+.SJF p {
+    
+    text-align: justify;
+    font-size: 23px;
+    padding-right: 50px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    padding-inline-start: 30px;
+    
+}
+.SJF ol{
+    padding-inline-start: 80px;
+}

@@ -1,0 +1,13 @@
+.FCFS {
+    padding: 20px;
+}
+.FCFS p {
+    padding-inline-start: 30px;
+    text-align: justify;
+    font-size: 23px;
+    padding-right: 50px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.FCFS ol{
+    padding-inline-start: 80px;
+}
