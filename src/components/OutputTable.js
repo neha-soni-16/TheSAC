@@ -26,11 +26,11 @@ const OutputTable = (props) => {
                 <table>
                     <thead>
                         <tr>
-                            <th>Process ID</th>
-                            <th>Arrival Time</th>
-                            <th>Burst Time</th>
-                            <th>Waiting Time</th>
-                            <th>Turn Around Time</th>
+                            <th className="newColor">Process ID</th>
+                            <th className="newColor">Arrival Time</th>
+                            <th className="newColor">Burst Time</th>
+                            <th className="newColor">Waiting Time</th>
+                            <th className="newColor">Turn Around Time</th>
                         </tr>
                     </thead>
 

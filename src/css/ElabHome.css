@@ -1,0 +1,44 @@
+.ElabHome {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20vh;
+    flex-direction: column;
+}
+
+.ElabHome h1 {
+    margin-bottom: 15vh;
+}
+
+.ElabHome .ElabCont {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ElabHome button {
+    width: 200px;
+    padding: 10px;
+    margin: 8px;
+    font-size: 20px;
+    cursor: pointer;
+    align-self: center;
+    transition: all 0.5s ease;
+}
+
+.ElabHome button:hover {
+    transition: all 0.5s ease;
+    transform: scale(1.2);
+}
+
+.ElabHome .ca {
+    background: linear-gradient(#bbe7fe 90%, #2e2e2e);
+}
+
+.ElabHome .cb {
+    background: linear-gradient(#ffd4db 90%, #2e2e2e);
+}
+
+.ElabHome .cc {
+    background: linear-gradient(#d3b5e5 90%, #2e2e2e);
+}

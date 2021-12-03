@@ -96,14 +96,16 @@ function Visualise() {
                         setChartData={setChartData}
                     />
                 ) : (
-                    <SJF                         processData={processData}
-                    setProcessData={setProcessData}
-                    processSequence={processSequence}
-                    setProcessSequence={setProcessSequence}
-                    chart={chart}
-                    setchart={setchart}
-                    chartData={chartData}
-                    setChartData={setChartData} />
+                    <SJF
+                        processData={processData}
+                        setProcessData={setProcessData}
+                        processSequence={processSequence}
+                        setProcessSequence={setProcessSequence}
+                        chart={chart}
+                        setchart={setchart}
+                        chartData={chartData}
+                        setChartData={setChartData}
+                    />
                 )}
             </div>
         </div>

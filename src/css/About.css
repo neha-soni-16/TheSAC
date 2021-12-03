@@ -1,0 +1,13 @@
+.About {
+    padding: 20px;
+}
+.About p {
+    padding-inline-start: 30px;
+    text-align: justify;
+    font-size: 23px;
+    padding-right: 50px;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+.About ol {
+    padding-inline-start: 80px;
+}

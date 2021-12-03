@@ -73,4 +73,48 @@
     padding: 10px;
     margin: 8px;
     font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.table form button:hover {
+    box-shadow: 1px 2px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+}
+
+.rr button {
+    width: 150px;
+    padding: 10px;
+    margin: 8px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.rr form input {
+    font-size: 20px;
+    margin: 8px;
+    padding: 10px;
+    width: 40%;
+}
+
+.table .newColor {
+    background: linear-gradient(#ffd4db 90%, #2e2e2e);
+}
+
+.fcfs button {
+    width: 150px;
+    padding: 10px;
+    margin: 8px;
+    font-size: 20px;
+    cursor: pointer;
+    align-self: center;
+}
+
+.sjf button {
+    width: 150px;
+    padding: 10px;
+    margin: 8px;
+    font-size: 20px;
+    cursor: pointer;
+    align-self: center;
 }

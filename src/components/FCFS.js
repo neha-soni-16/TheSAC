@@ -81,7 +81,7 @@ const FCFS = (props) => {
                 setProcessData={props.setProcessData}
             />
             <button onClick={() => calculateFCFS(props.processData)}>
-                submit
+                Calculate
             </button>
 
             {props.chart && (
